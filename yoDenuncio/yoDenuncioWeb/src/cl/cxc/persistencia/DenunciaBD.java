@@ -24,7 +24,7 @@ public class DenunciaBD {
     private ResultSet resultSet = null;
     private final String SELECT_DENUNCIAS="select * from denuncias";
   private final String SELECT_DENUNCIA="select * from denuncias where id=?";
-  private final String INSERT_DENUNCIA="insert into  denuncias (lat, lng, descripcion,fecha, estado) values (?, ?, ?, ?, ?)";
+  private final String INSERT_DENUNCIA="insert into  denuncias (lat, lng, descripcion,archivo_imagen,fecha, estado) values (?, ?, ?, ?, ?,?)";
   private final String INSERT_DENUNCIA_ARCHIVO="insert into  denuncias (archivo_imagen) values (?)";
 
     public DenunciaBD() {
@@ -73,13 +73,13 @@ public class DenunciaBD {
       try {
          
           preparedStatement = connect.prepareStatement(INSERT_DENUNCIA);
-        preparedStatement.setInt(1,id);
-        preparedStatement.setDouble(2,lat);
-        preparedStatement.setDouble(3,lon);
-        preparedStatement.setString(4,desc);
-        preparedStatement.setString(5,archivo);
-        preparedStatement.setDate(6, (Date)fech);
-        preparedStatement.setString(7,est);
+       // preparedStatement.setInt(1,id);
+        preparedStatement.setDouble(1,lat);
+        preparedStatement.setDouble(2,lon);
+        preparedStatement.setString(3,desc);
+        preparedStatement.setString(4,archivo);
+        preparedStatement.setDate(5, (Date)fech);
+        preparedStatement.setString(6,est);
          preparedStatement.executeUpdate();
           
       } catch (SQLException e) {
