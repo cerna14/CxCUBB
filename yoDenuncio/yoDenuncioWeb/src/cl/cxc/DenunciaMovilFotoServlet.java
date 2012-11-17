@@ -18,10 +18,8 @@ public class DenunciaMovilFotoServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType(CONTENT_TYPE);
-        System.out.println("Recibiendo imagen en servlet");
-        
-        
-        File filename = new File("D:/CMS/apache-tomcat-7.0.29/webapps/cxc/images/prueba"+Math.random()*1000000+".jpg");
+      System.out.println("Recibiendo imagen en servlet");
+      File filename = new File("D:/prueba.jpg");
         FileOutputStream out = new FileOutputStream(filename);
         InputStream in = request.getInputStream();
         System.out.println(in.available());
@@ -33,23 +31,7 @@ public class DenunciaMovilFotoServlet extends HttpServlet {
             out.write(buf, 0, nread);
         }
         System.out.println("bytes leidos " + total_read);
-
         out.close();
         in.close();
-
-        Controlador cont;
-
-        try {
-            cont = Controlador.getInstance();
-            int id = cont.agregaDenuncia(filename.getName());
-            PrintWriter print = response.getWriter();
-            response.addDateHeader("id", 1111);
-            print.print("esta es una respuesta ");
-            print.flush();
-            print.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
     }
 }
