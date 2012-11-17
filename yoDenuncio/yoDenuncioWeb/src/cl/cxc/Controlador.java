@@ -1,5 +1,7 @@
 package cl.cxc;
 
+import cl.cxc.persistencia.DenunciaBD;
+
 import java.io.IOException;
 
 import java.util.LinkedList;
@@ -29,8 +31,10 @@ public class Controlador {
         
         //SOLO PARA PRUEBA
         LinkedList<Denuncia> lista= new LinkedList<Denuncia>();
-        lista.add(new Denuncia(1,-33.4492362, -70.654778, "denuncia1", "foto1",null, ""));
+        /* lista.add(new Denuncia(1,-33.4492362, -70.654778, "denuncia1", "foto1",null, ""));
         lista.add(new Denuncia(2,-33.442909, -70.65387, "denuncia2", "foto2",null,""));
-           return lista;
+           return lista; */
+        DenunciaBD db= new DenunciaBD();
+       return db.obtieneDenuncias();
     }
 }

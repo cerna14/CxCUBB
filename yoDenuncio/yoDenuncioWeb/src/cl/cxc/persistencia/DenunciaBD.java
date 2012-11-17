@@ -38,7 +38,7 @@ public class DenunciaBD {
             statement = connect.createStatement();
             resultSet = statement.executeQuery(SELECT_DENUNCIAS);
             while (resultSet.next()) {
-                denuncias.add(new Denuncia(resultSet.getInt(1), resultSet.getLong(2),resultSet.getLong(3),resultSet.getString(4), resultSet.getString(5), resultSet.getDate(6),resultSet.getString(7)) );
+                denuncias.add(new Denuncia(resultSet.getInt(1), resultSet.getDouble(2),resultSet.getDouble(3),resultSet.getString(4), resultSet.getString(5), resultSet.getDate(6),resultSet.getString(7)) );
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +55,9 @@ public class DenunciaBD {
         preparedStatement.setInt(1,id);
           resultSet= preparedStatement.executeQuery();
           while (resultSet.next()) {
+              
               denuncia= new Denuncia(resultSet.getInt(1), resultSet.getDouble(2), resultSet.getDouble(3), resultSet.getString(4), resultSet.getString(5), resultSet.getDate(6), resultSet.getString(7));
+            System.err.println("longitud "+resultSet.getDouble(2));
           }
       } catch (SQLException e) {
           e.printStackTrace();
